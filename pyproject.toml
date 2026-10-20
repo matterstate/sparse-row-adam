@@ -1,5 +1,5 @@
 [project]
-name = "engram-cpu"
+name = "sparse-row-adam"
 version = "0.1.0"
 description = "NumPy adapter for a bounded Rust sparse memory-table optimizer"
 license = "MIT"
@@ -8,7 +8,7 @@ requires-python = ">=3.11"
 dependencies = ["numpy>=2,<3"]
 
 [project.urls]
-Repository = "https://github.com/gauge-numerics/engram-cpu"
+Repository = "https://github.com/matterstate/sparse-row-adam"
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.12"]

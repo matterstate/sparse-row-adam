@@ -6,8 +6,8 @@ import sys
 import numpy as np
 import pytest
 
-from engram_cpu import step
 from reference import reference, round_to_bfloat16_bits
+from sparse_row_adam import step
 
 
 @pytest.mark.parametrize("learning_rate,weight_decay", [(0.01, 0.025), (1e-6, 0.0), (0.1, 0.5)])
@@ -118,7 +118,7 @@ def test_unsafe_buffers_are_rejected_without_mutation(failure):
 def test_buffer_validation_survives_python_optimization():
     source = """
 import numpy as np
-from engram_cpu import step
+from sparse_row_adam import step
 bits = np.zeros((1, 32), np.uint16)
 try:
     step(bits, np.zeros(1, np.float32), np.array([0]), np.ones((1, 64), np.float32), 0.01, 0)

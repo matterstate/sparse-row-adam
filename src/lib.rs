@@ -17,7 +17,7 @@ pub struct StepOptions {
 /// # Safety
 /// Pointers must name disjoint, aligned arrays of the declared lengths for the duration of this call.
 #[no_mangle]
-pub unsafe extern "C" fn engram_step(
+pub unsafe extern "C" fn sparse_row_adam_step(
     bits: *mut u16,
     moments: *mut f32,
     indices: *const i64,

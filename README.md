@@ -1,4 +1,4 @@
-# engram-cpu
+# sparse-row-adam
 
 A Rust CPU kernel for sparse updates to 64-wide bf16 memory rows, with a NumPy
 adapter and C interface. No Rust dependencies.
@@ -11,12 +11,12 @@ Weights are rounded to bf16.
 ## Build
 
 ```sh
-nix build path:. --out-link .engram-cpu
+nix build path:. --out-link .sparse-row-adam
 nix develop path:.
 ```
 
 Or use `cargo build --release` with Rust 1.88 or later. The Python adapter needs
-NumPy 2.x. Set `ENGRAM_CPU_LIBRARY` for a library outside the default build
+NumPy 2.x. Set `SPARSE_ROW_ADAM_LIBRARY` for a library outside the default build
 paths. Linux is the tested platform.
 
 ## Use
@@ -24,7 +24,7 @@ paths. Linux is the tested platform.
 ```python
 import numpy as np
 
-from engram_cpu import step
+from sparse_row_adam import step
 
 bits = np.zeros((1024, 64), dtype=np.uint16)
 moments = np.zeros(1024, dtype=np.float32)
@@ -34,8 +34,8 @@ assert step(bits, moments, indices, gradients, 0.01, 0.025) == 2
 ```
 
 `bits` contains bf16 bit patterns. Weights and moments must be writable,
-aligned, contiguous and non-overlapping. See `include/engram_cpu.h` for the C
-interface. Indices must be integers and gradients must be real numbers. Do not
+aligned, contiguous and non-overlapping. See `include/sparse_row_adam.h` for the
+C interface. Indices must be integers and gradients must be real numbers. Do not
 mutate or resize input arrays while a call is running.
 
 ## Verify

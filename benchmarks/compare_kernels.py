@@ -15,8 +15,8 @@ os.environ["OPENBLAS_NUM_THREADS"] = "1"
 
 import numpy as np
 
-from engram_cpu import StepOptions
 from reference import reference, round_to_bfloat16_bits
+from sparse_row_adam import StepOptions
 
 
 def main() -> None:
@@ -37,7 +37,7 @@ def main() -> None:
     libraries, functions = {}, {}
     for name, path in (("baseline", args.baseline), ("candidate", args.candidate)):
         libraries[name] = ctypes.CDLL(str(path.resolve()))
-        functions[name] = libraries[name].engram_step
+        functions[name] = libraries[name].sparse_row_adam_step
         functions[name].argtypes = [ctypes.c_void_p] * 4 + [ctypes.POINTER(StepOptions)]
         functions[name].restype = ctypes.c_int64
     results = []

@@ -1,5 +1,5 @@
-#ifndef ENGRAM_CPU_H
-#define ENGRAM_CPU_H
+#ifndef SPARSE_ROW_ADAM_H
+#define SPARSE_ROW_ADAM_H
 #include <stddef.h>
 #include <stdint.h>
 
@@ -8,7 +8,7 @@ typedef struct {
   size_t lookups;
   double learning_rate;
   double weight_decay;
-} EngramStepOptions;
+} SparseRowAdamOptions;
 
 /* Arrays must be aligned, disjoint and valid for the duration of the call.
    bits: rows * 64 writable uint16 bf16 bit patterns.
@@ -19,6 +19,7 @@ typedef struct {
    workspace. Checked errors do not mutate bits or moments. Concurrent calls
    must not share writable arrays. The caller owns pointer validity and
    allocation lengths. */
-int64_t engram_step(uint16_t *bits, float *moments, const int64_t *indices,
-                    const float *gradients, const EngramStepOptions *options);
+int64_t sparse_row_adam_step(uint16_t *bits, float *moments,
+                             const int64_t *indices, const float *gradients,
+                             const SparseRowAdamOptions *options);
 #endif

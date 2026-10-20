@@ -12,8 +12,8 @@ os.environ["OPENBLAS_NUM_THREADS"] = "1"
 
 import numpy as np
 
-from engram_cpu import step
 from reference import reference, round_to_bfloat16_bits
+from sparse_row_adam import step
 
 
 def main() -> None:

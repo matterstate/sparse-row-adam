@@ -4,7 +4,7 @@
 !/Cargo.toml
 !/LICENSE
 !/README.md
-!/engram_cpu.py
+!/sparse_row_adam.py
 !/flake.lock
 !/flake.nix
 !/pyproject.toml
@@ -13,7 +13,7 @@
 !/benchmarks/compare_kernels.py
 !/benchmarks/sparse_update.py
 !/include/
-!/include/engram_cpu.h
+!/include/sparse_row_adam.h
 !/src/
 !/src/lib.rs
 !/tests/

@@ -21,7 +21,7 @@
 
       perSystem = { pkgs, ... }: {
         packages.default =
-          pkgs.runCommand "engram-cpu"
+          pkgs.runCommand "sparse-row-adam"
             {
               nativeBuildInputs = [
                 pkgs.rustc
@@ -31,14 +31,14 @@
             ''
               mkdir -p $out/lib $out/include
               rustc --edition=2021 --crate-type cdylib -C opt-level=3 -C codegen-units=1 \
-                ${./src/lib.rs} -o $out/lib/libengram_cpu.so
-              cp ${./include/engram_cpu.h} $out/include/engram_cpu.h
+                ${./src/lib.rs} -o $out/lib/libsparse_row_adam.so
+              cp ${./include/sparse_row_adam.h} $out/include/sparse_row_adam.h
             '';
 
         formatter = pkgs.nixfmt;
 
         devshells.default = {
-          name = "engram-cpu";
+          name = "sparse-row-adam";
           packages = [
             pkgs.cargo
             pkgs.rustc
