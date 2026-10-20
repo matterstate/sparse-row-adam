@@ -1,0 +1,15 @@
+[package]
+name = "engram-cpu"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+description = "Bounded sparse updates for 64-wide bf16 CPU memory tables"
+license = "MIT"
+repository = "https://github.com/gauge-numerics/engram-cpu"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+codegen-units = 1

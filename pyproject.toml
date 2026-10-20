@@ -1,0 +1,26 @@
+[project]
+name = "engram-cpu"
+version = "0.1.0"
+description = "NumPy adapter for a bounded Rust sparse memory-table optimizer"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = ["numpy>=2,<3"]
+
+[project.urls]
+Repository = "https://github.com/gauge-numerics/engram-cpu"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.12"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.uv]
+package = false
